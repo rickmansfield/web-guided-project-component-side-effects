@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 // 👉 TASK 1 - import the axios lib from node_modules
-
+import axios from 'axios';
 // 👉 TASK 2 - import the contants from constants/index.js
+import {BASE_URL, API_KEY} from '../constants/index';
 
-import Details from './Details'
+
+import Details from './Details';
 
 export default function App() {
-  const [friends, setFriends] = useState([])
-  const [currentFriendId, setCurrentFriendId] = useState(null)
+  const [friends, setFriends] = useState([]);
+  const [currentFriendId, setCurrentFriendId] = useState(null);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/friends?api_key=${API_KEY}`);
+  }, []);
 
   const openDetails = id => {
     setCurrentFriendId(id)
