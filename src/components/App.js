@@ -12,7 +12,13 @@ export default function App() {
   const [currentFriendId, setCurrentFriendId] = useState(null);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/friends?api_key=${API_KEY}`);
+    axios.get(`${BASE_URL}/friends?api_key=${API_KEY}`)
+    .then(res => {
+      debugger
+    })
+    .catch(err => {
+      debugger
+    })
   }, []);
 
   const openDetails = id => {
