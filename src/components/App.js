@@ -52,7 +52,7 @@ export default function App() {
         })
       }
       {
-        currentFriendId && <Details friendId={1} close={closeDetails} />
+        currentFriendId && <Details friendId={currentFriendId} close={closeDetails} />
       }
     </div>
   )
