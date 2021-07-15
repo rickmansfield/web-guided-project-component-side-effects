@@ -7,10 +7,28 @@ export default function Details(props) {
   const [details, setDetails] = useState(null)
 
   // 👉 TASK 4 - Create a side effect 🥇 that runs only after first render.
+  useEffect(() => {
+    console.log(`👉 EFFECT ONLY AFTER FIRST RENDER+DOM SURGERY`);
+    return () => {
+      console.log(`👉 CLEAN UP before component is removed from dom`);
+    }
+  }, []);
 
   // 👉 TASK 5 - Create a side effect 👻 that runs only after first render
   // and puts a 'click' event handler on document.
   // See what happens if we don't clean up.
+
+  useEffect(() => {
+    //memory leak or "dirty" thing typically here..
+    const listener = evt => {
+      console.log(`here is a pseudorandom number ${Math.random()}`);
+    }
+    document.addEventListener('click', listener);
+    return() => {
+      //clean up
+      document.removeEventListener('click', listener)
+    }
+  });
 
   // 👉 TASK 6 - Create a side effect 🥵 that runs after every render.
 
